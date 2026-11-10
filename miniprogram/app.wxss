@@ -1,0 +1,115 @@
+page {
+  --color-primary: #13a8a7;
+  --color-primary-deep: #087e80;
+  --color-primary-soft: #e6f7f5;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #123846;
+  --color-muted: #7d8fa8;
+  --color-border: #e9eef4;
+  --color-danger: #a13d42;
+  --shadow-card: 0 8rpx 28rpx rgba(35, 69, 88, 0.04);
+  min-height: 100%;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 28rpx;
+}
+
+view,
+text,
+input,
+textarea,
+button {
+  box-sizing: border-box;
+}
+
+button::after {
+  border: 0;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 28rpx 28rpx calc(180rpx + env(safe-area-inset-bottom));
+}
+
+.page-title {
+  margin: 4rpx 0 28rpx;
+  font-size: 40rpx;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+}
+
+.surface {
+  background: var(--color-surface);
+  border: 1rpx solid #edf1f6;
+  border-radius: 30rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.primary-button,
+.secondary-button,
+.danger-button {
+  min-height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.secondary-button {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-deep);
+}
+
+.danger-button {
+  background: #f8e9e9;
+  color: var(--color-danger);
+}
+
+.empty-state {
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.empty-state__symbol {
+  width: 112rpx;
+  height: 112rpx;
+  margin-bottom: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 36rpx;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 54rpx;
+}
+
+.empty-state__title {
+  margin-bottom: 12rpx;
+  color: var(--color-text);
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.empty-state__text {
+  max-width: 480rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+}
+
+.primary-button, .secondary-button, .danger-button { line-height:1.4; padding:20rpx 28rpx; }
+.primary-button:active, .secondary-button:active, .danger-button:active { opacity:.82; }
+.primary-button[disabled], .secondary-button[disabled] { opacity:.45; }

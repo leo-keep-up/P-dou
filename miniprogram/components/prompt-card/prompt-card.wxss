@@ -1,0 +1,15 @@
+.prompt-card { display:flex; gap:12rpx; padding:24rpx 0 24rpx 12rpx; min-height:180rpx; background:#fff; border-bottom:2rpx solid #f0f4f6; border-radius:16rpx; }
+.prompt-card:active { background:#f4fbfa; }
+.prompt-card__body { flex:1; min-width:0; }
+.prompt-card__heading { display:flex; align-items:center; gap:16rpx; margin-bottom:12rpx; }
+.prompt-card__heading tag-pill { flex-shrink:0; max-width:170rpx; }
+.prompt-card__title { flex:1; min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#123846; font-size:29rpx; font-weight:650; }
+.prompt-card__content { display:-webkit-box; overflow:hidden; -webkit-line-clamp:2; -webkit-box-orient:vertical; color:#70849a; font-size:26rpx; line-height:1.65; word-break:break-word; }
+.prompt-card__tags { display:flex; flex-wrap:wrap; gap:8rpx; margin-top:12rpx; }
+.prompt-card__actions { flex:0 0 88rpx; display:flex; flex-direction:column; justify-content:space-between; align-items:center; }
+.prompt-card__favorite, .prompt-card__more { display:flex; align-items:center; justify-content:center; width:88rpx; height:80rpx; color:#7188a2; border-radius:20rpx; }
+.prompt-card__favorite { font-size:43rpx; }
+.prompt-card__favorite.is-active { color:#ffb800; }
+.prompt-card__more { font-size:32rpx; letter-spacing:3rpx; }
+.prompt-card__favorite:active, .prompt-card__more:active { background:#e6f7f5; }
+.prompt-card__conflict { display:block; margin-top:12rpx; color:#9a651b; font-size:22rpx; line-height:1.5; }

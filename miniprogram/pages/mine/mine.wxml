@@ -1,0 +1,55 @@
+<view class="page-shell mine-page">
+  <view class="page-title">我的</view>
+
+  <view class="account-card">
+    <view class="account-card__top">
+      <view class="account-avatar">词</view>
+      <view class="account-copy">
+        <text class="account-title">{{cloudSyncEnabled ? '微信云同步已开启' : cloudConfigured ? '云同步可以开启' : '数据保存在本机'}}</text>
+        <text class="account-desc">{{cloudSyncEnabled ? lastSyncLabel : cloudConfigured ? '开启后可在手机和电脑间同步' : '配置云环境后可跨设备同步'}}</text>
+      </view>
+    </view>
+    <button wx:if="{{!cloudSyncEnabled}}" class="account-button" disabled="{{syncing}}" bindtap="openCloudSetup">{{syncing ? '开启中…' : cloudConfigured ? '使用微信开启自动同步' : '查看云同步配置'}}</button>
+    <text wx:else class="account-sync-status">自动同步已开启 · 无需手动操作</text>
+    <text class="account-sync-status" wx:if="{{syncStatus}}">{{syncStatus}}</text>
+  </view>
+
+  <view class="stats-card surface">
+    <view class="stat-item">
+      <text class="stat-value">{{promptCount}}</text>
+      <text class="stat-label">提示词</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-value">{{favoriteCount}}</text>
+      <text class="stat-label">收藏</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-value">{{tagCount}}</text>
+      <text class="stat-label">标签</text>
+    </view>
+  </view>
+
+  <view class="menu-group surface" wx:for="{{menuGroups}}" wx:key="index">
+    <view
+      class="menu-row"
+      wx:for="{{item}}"
+      wx:for-item="menu"
+      wx:key="key"
+      data-key="{{menu.key}}"
+      bindtap="handleMenu"
+    >
+      <view class="menu-row__symbol">{{menu.symbol}}</view>
+      <view class="menu-row__copy">
+        <text class="menu-row__title">{{menu.title}}</text>
+        <text class="menu-row__desc">{{menu.key === 'recycle' && recycleCount ? recycleCount + ' 条待处理' : menu.desc}}</text>
+      </view>
+      <text class="menu-row__arrow">›</text>
+    </view>
+  </view>
+
+  <text class="version">P兜 · AI提示词库</text>
+</view>
+
+<bottom-nav current="mine" />

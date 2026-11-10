@@ -1,0 +1,63 @@
+.detail-page {
+  min-height: 100vh;
+  padding: 26rpx 28rpx calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.detail-meta {
+  min-height: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  color: #81929b;
+  font-size: 22rpx;
+}
+
+.favorite-button {
+  padding: 14rpx 20rpx;
+  border-radius: 999rpx;
+  background: #fff;
+  color: #758892;
+}
+
+.favorite-button.is-active {
+  background: #fff4dc;
+  color: #b8791d;
+}
+
+.detail-card {
+  min-height: 450rpx;
+  margin-top: 18rpx;
+  padding: 38rpx 34rpx;
+}
+
+.detail-content {
+  color: #123846;
+  font-size: 31rpx;
+  line-height: 1.85;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.detail-tags {
+  margin-top: 42rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.detail-actions {
+  margin-top: 28rpx;
+  display: flex;
+  gap: 14rpx;
+}
+
+.detail-actions button {
+  width: auto;
+  flex: 1;
+  padding: 0 12rpx;
+}
+
+.detail-actions button:first-child {
+  flex: 1.6;
+}

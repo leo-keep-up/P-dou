@@ -1,0 +1,26 @@
+<view class="bottom-nav-wrap">
+  <view class="bottom-nav">
+    <view class="bottom-nav__item {{current === 'tags' ? 'is-active' : ''}}" bindtap="goTags">
+      <view class="bottom-nav__icon-box">
+        <view class="tag-icon">#</view>
+      </view>
+      <text>标签</text>
+    </view>
+
+    <view class="bottom-nav__create-item" bindtap="goCreate" aria-label="新增提示词">
+      <view class="bottom-nav__create">
+        <text>＋</text>
+      </view>
+    </view>
+
+    <view class="bottom-nav__item {{current === 'mine' ? 'is-active' : ''}}" bindtap="goMine">
+      <view class="bottom-nav__icon-box">
+        <view class="user-icon">
+          <view class="user-icon__head"></view>
+          <view class="user-icon__body"></view>
+        </view>
+      </view>
+      <text>我的</text>
+    </view>
+  </view>
+</view>

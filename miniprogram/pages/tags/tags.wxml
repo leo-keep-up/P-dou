@@ -1,0 +1,36 @@
+<view class="page-shell tags-page">
+  <view class="subpage-heading">
+    <view class="page-title">标签</view>
+    <text class="tag-total">{{tags.length}} 个标签</text>
+  </view>
+
+  <view class="tag-create surface">
+    <input value="{{tagName}}" maxlength="20" placeholder="新标签名称" bindinput="handleName" bindconfirm="addTag" />
+    <button bindtap="addTag">添加</button>
+  </view>
+
+  <view class="tag-search">
+    <text>⌕</text>
+    <input value="{{query}}" placeholder="搜索标签" bindinput="handleSearch" />
+  </view>
+
+  <view class="tag-list" wx:if="{{tags.length}}">
+    <view class="tag-row surface" wx:for="{{tags}}" wx:key="id" data-id="{{item.id}}" bindtap="openTag">
+      <view class="tag-row__mark">#</view>
+      <view class="tag-row__content">
+        <text class="tag-row__name">{{item.name}}</text>
+        <text class="tag-row__count">{{item.count}} 条提示词</text>
+      </view>
+      <view class="tag-row__action" data-id="{{item.id}}" catchtap="renameTag">改名</view>
+      <view class="tag-row__action is-danger" data-id="{{item.id}}" catchtap="deleteTag">删除</view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-state__symbol">#</view>
+    <text class="empty-state__title">{{query ? '没有找到这个标签' : '还没有标签'}}</text>
+    <text class="empty-state__text">标签可以从多个角度组织提示词，不需要再建立分类层级。</text>
+  </view>
+</view>
+
+<bottom-nav current="tags" />

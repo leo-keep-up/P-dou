@@ -1,0 +1,41 @@
+<view class="backups-page">
+  <view class="backups-heading">
+    <text class="backups-heading__eyebrow">SYNC BACKUPS</text>
+    <view class="page-title">同步备份</view>
+    <text class="backups-heading__desc">每次云同步前自动保存，最多保留最近三份。</text>
+  </view>
+
+  <view class="safety-tip">
+    <view class="safety-tip__icon">✓</view>
+    <text>恢复备份只替换本机数据；后续同步仍会检查云端版本，不会绕过冲突规则。</text>
+  </view>
+
+  <view class="backup-list" wx:if="{{backups.length}}">
+    <view class="backup-card surface" wx:for="{{backups}}" wx:key="id">
+      <view class="backup-card__heading">
+        <view>
+          <text class="backup-card__reason">{{item.reason}}</text>
+          <text class="backup-card__time">{{item.createdLabel}}</text>
+        </view>
+        <view class="backup-card__badge">快照</view>
+      </view>
+
+      <view class="backup-card__stats">
+        <view><text>{{item.activePromptCount}}</text><text>提示词</text></view>
+        <view><text>{{item.tagCount}}</text><text>标签</text></view>
+        <view><text>{{item.deletedPromptCount}}</text><text>回收站</text></view>
+      </view>
+
+      <view class="backup-card__actions">
+        <button class="delete-backup" data-id="{{item.id}}" bindtap="removeBackup">删除备份</button>
+        <button class="restore-backup" data-id="{{item.id}}" bindtap="restoreBackup">恢复此备份</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-state__symbol">◫</view>
+    <text class="empty-state__title">还没有同步备份</text>
+    <text class="empty-state__text">配置云环境并执行首次同步后，这里会出现同步前快照。</text>
+  </view>
+</view>

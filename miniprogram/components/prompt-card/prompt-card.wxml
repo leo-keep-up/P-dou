@@ -1,0 +1,17 @@
+<view class="prompt-card" bindtap="copyPrompt">
+  <view class="prompt-card__body">
+    <view class="prompt-card__heading">
+      <tag-pill wx:if="{{prompt.tagNames.length}}" label="{{prompt.tagNames[0]}}" compact="{{true}}" />
+      <text class="prompt-card__title">{{headline}}</text>
+    </view>
+    <text class="prompt-card__content">{{excerpt}}</text>
+    <text class="prompt-card__conflict" wx:if="{{prompt.conflictOf}}">冲突副本 · 请核对后保留或删除</text>
+    <view class="prompt-card__tags" wx:if="{{prompt.tagNames.length > 1}}">
+      <block wx:for="{{prompt.tagNames}}" wx:key="*this"><tag-pill wx:if="{{index > 0}}" label="{{item}}" compact="{{true}}" /></block>
+    </view>
+  </view>
+  <view class="prompt-card__actions">
+    <view class="prompt-card__favorite {{prompt.isFavorite ? 'is-active' : ''}}" catchtap="toggleFavorite" catchlongpress="swallow" aria-label="{{prompt.isFavorite ? '取消收藏' : '收藏'}}"><text>{{prompt.isFavorite ? '★' : '☆'}}</text></view>
+    <view class="prompt-card__more" catchtap="openDetail" catchlongpress="swallow" aria-label="查看详情">···</view>
+  </view>
+</view>

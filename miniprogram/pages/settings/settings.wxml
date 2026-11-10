@@ -1,0 +1,81 @@
+<view class="settings-page">
+  <view class="settings-heading">
+    <text class="settings-heading__eyebrow">PREFERENCES</text>
+    <view class="page-title">设置</view>
+  </view>
+
+  <text class="section-label">使用偏好</text>
+  <view class="settings-group surface">
+    <view class="setting-row">
+      <view class="setting-copy">
+        <text class="setting-title">复制成功提示</text>
+        <text class="setting-desc">复制提示词后显示成功提示</text>
+      </view>
+      <switch checked="{{showCopyToast}}" color="#13A8A7" bindchange="toggleCopyToast" />
+    </view>
+
+    <view class="setting-row is-column">
+      <view class="setting-copy">
+        <text class="setting-title">首页默认显示</text>
+        <text class="setting-desc">每次重新打开小程序时使用</text>
+      </view>
+      <view class="segment-control">
+        <view class="segment-item {{defaultList === 'all' ? 'is-active' : ''}}" data-value="all" bindtap="changeDefaultList">全部</view>
+        <view class="segment-item {{defaultList === 'favorite' ? 'is-active' : ''}}" data-value="favorite" bindtap="changeDefaultList">收藏</view>
+      </view>
+    </view>
+  </view>
+
+  <text class="section-label">回收站</text>
+  <view class="settings-group surface">
+    <view class="setting-row is-column">
+      <view class="setting-copy">
+        <text class="setting-title">自动清理期限</text>
+        <text class="setting-desc">超过期限的本地删除记录会被清理</text>
+      </view>
+      <view class="retention-options">
+        <view
+          class="retention-option {{recycleRetentionDays === item ? 'is-active' : ''}}"
+          wx:for="{{retentionOptions}}"
+          wx:key="*this"
+          data-value="{{item}}"
+          bindtap="changeRetention"
+        >{{item}} 天</view>
+      </view>
+    </view>
+  </view>
+
+  <text class="section-label">本机数据</text>
+  <view class="settings-group surface">
+    <view class="storage-summary">
+      <view>
+        <text class="storage-value">{{promptCount}}</text>
+        <text class="storage-label">条提示词记录</text>
+      </view>
+      <view>
+        <text class="storage-value">{{tagCount}}</text>
+        <text class="storage-label">个标签记录</text>
+      </view>
+      <view>
+        <text class="storage-value">{{storageSizeLabel}}</text>
+        <text class="storage-label">估算占用</text>
+      </view>
+    </view>
+    <view class="navigation-row" bindtap="openBackups">
+      <view class="setting-copy">
+        <text class="setting-title">同步备份</text>
+        <text class="setting-desc">查看和恢复最近三份同步前快照</text>
+      </view>
+      <text class="navigation-arrow">›</text>
+    </view>
+    <view class="danger-row" bindtap="clearLocalData">
+      <view class="setting-copy">
+        <text class="setting-title">清除全部本机数据</text>
+        <text class="setting-desc">不会删除已经同步到云端的数据</text>
+      </view>
+      <text class="danger-arrow">›</text>
+    </view>
+  </view>
+
+  <text class="settings-version">P兜 · AI提示词库</text>
+</view>

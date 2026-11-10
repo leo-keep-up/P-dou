@@ -1,0 +1,20 @@
+<view class="detail-page" wx:if="{{prompt}}">
+  <view class="detail-meta">
+    <text>最后修改于 {{updatedLabel}}</text>
+    <view class="favorite-button {{prompt.isFavorite ? 'is-active' : ''}}" bindtap="toggleFavorite">
+      <text>{{prompt.isFavorite ? '★ 已收藏' : '☆ 收藏'}}</text>
+    </view>
+  </view>
+
+  <view class="detail-card surface">
+    <text class="detail-content" selectable="true">{{prompt.content}}</text>
+    <view class="detail-tags" wx:if="{{tags.length}}">
+      <tag-pill wx:for="{{tags}}" wx:key="id" label="{{item.name}}" compact="{{true}}" />
+    </view>
+  </view>
+
+  <view class="detail-actions">
+    <button class="primary-button" bindtap="editPrompt">编辑</button>
+    <button class="danger-button" bindtap="deletePrompt">删除</button>
+  </view>
+</view>

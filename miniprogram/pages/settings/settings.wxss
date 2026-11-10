@@ -1,0 +1,178 @@
+.settings-page {
+  min-height: 100vh;
+  padding: 28rpx 28rpx calc(52rpx + env(safe-area-inset-bottom));
+}
+
+.settings-heading__eyebrow {
+  color: #75909e;
+  font-size: 19rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+}
+
+.section-label {
+  margin: 28rpx 8rpx 14rpx;
+  display: block;
+  color: #7b8e98;
+  font-size: 22rpx;
+}
+
+.settings-group {
+  padding: 0 26rpx;
+  overflow: hidden;
+}
+
+.setting-row {
+  min-height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  border-bottom: 1rpx solid #e8eef1;
+}
+
+.setting-row:last-child {
+  border-bottom: 0;
+}
+
+.setting-row.is-column {
+  padding: 26rpx 0;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.setting-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.setting-title,
+.setting-desc {
+  display: block;
+}
+
+.setting-title {
+  color: #123846;
+  font-size: 27rpx;
+  font-weight: 580;
+}
+
+.setting-desc {
+  margin-top: 7rpx;
+  color: #8999a2;
+  font-size: 21rpx;
+  line-height: 1.5;
+}
+
+.segment-control {
+  height: 70rpx;
+  padding: 6rpx;
+  display: flex;
+  border-radius: 21rpx;
+  background: #e8eff2;
+}
+
+.segment-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  color: #70838e;
+  font-size: 24rpx;
+}
+
+.segment-item.is-active {
+  background: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(45, 77, 91, 0.1);
+  color: #087e80;
+  font-weight: 650;
+}
+
+.retention-options {
+  display: flex;
+  gap: 12rpx;
+}
+
+.retention-option {
+  height: 66rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #e9eef4;
+  border-radius: 18rpx;
+  color: #657b87;
+  font-size: 23rpx;
+}
+
+.retention-option.is-active {
+  border-color: #13a8a7;
+  background: #e6f7f5;
+  color: #087e80;
+  font-weight: 650;
+}
+
+.storage-summary {
+  min-height: 148rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #e8eef1;
+}
+
+.storage-summary > view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7rpx;
+}
+
+.storage-value {
+  color: #2e4a58;
+  font-size: 29rpx;
+  font-weight: 700;
+}
+
+.storage-label {
+  color: #8898a1;
+  font-size: 19rpx;
+}
+
+.danger-row {
+  min-height: 120rpx;
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.navigation-row {
+  min-height: 120rpx;
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  border-bottom: 1rpx solid #e8eef1;
+}
+
+.navigation-arrow {
+  color: #91a1a9;
+  font-size: 40rpx;
+}
+
+.danger-row .setting-title {
+  color: #9d4449;
+}
+
+.danger-arrow {
+  color: #b47b7e;
+  font-size: 40rpx;
+}
+
+.settings-version {
+  margin-top: 34rpx;
+  display: block;
+  text-align: center;
+  color: #a0adb4;
+  font-size: 20rpx;
+}

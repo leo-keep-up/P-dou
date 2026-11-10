@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "提示词详情",
+  "usingComponents": {
+    "tag-pill": "/components/tag-pill/tag-pill"
+  }
+}

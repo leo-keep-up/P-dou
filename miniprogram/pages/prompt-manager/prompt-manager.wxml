@@ -1,0 +1,92 @@
+<view class="manager-page {{selectedCount ? 'has-action-bar' : ''}}">
+  <view class="manager-heading">
+    <view>
+      <text class="manager-heading__eyebrow">BATCH MANAGE</text>
+      <view class="page-title">提示词管理</view>
+    </view>
+    <view class="selection-clear" wx:if="{{selectedCount}}" bindtap="clearSelection">取消选择</view>
+  </view>
+
+  <view class="manager-search">
+    <text class="manager-search__icon">⌕</text>
+    <input value="{{query}}" placeholder="搜索正文或标签" bindinput="handleSearch" />
+    <view class="manager-search__clear" wx:if="{{query}}" bindtap="clearSearch">×</view>
+  </view>
+
+  <view class="manager-toolbar" wx:if="{{prompts.length}}">
+    <view class="select-all" bindtap="toggleSelectAll">
+      <view class="select-box {{allVisibleSelected ? 'is-selected' : ''}}">{{allVisibleSelected ? '✓' : ''}}</view>
+      <text>{{allVisibleSelected ? '取消全选' : '全选当前结果'}}</text>
+    </view>
+    <text>{{selectedCount ? '已选择 ' + selectedCount + ' 条' : prompts.length + ' 条提示词'}}</text>
+  </view>
+
+  <view class="manager-list" wx:if="{{prompts.length}}">
+    <view
+      class="manager-card surface {{item.selected ? 'is-selected' : ''}}"
+      wx:for="{{prompts}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="togglePrompt"
+    >
+      <view class="select-box {{item.selected ? 'is-selected' : ''}}">{{item.selected ? '✓' : ''}}</view>
+      <view class="manager-card__body">
+        <text class="manager-card__content">{{item.content}}</text>
+        <view class="manager-card__meta">
+          <view class="manager-card__tags" wx:if="{{item.tagNames.length}}">
+            <text wx:for="{{item.tagNames}}" wx:key="*this">#{{item}}</text>
+          </view>
+          <text>{{item.updatedLabel}}</text>
+        </view>
+      </view>
+      <text class="manager-card__favorite" wx:if="{{item.isFavorite}}">★</text>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-state__symbol">☷</view>
+    <text class="empty-state__title">{{query ? '没有匹配的提示词' : '还没有提示词'}}</text>
+    <text class="empty-state__text">新增提示词后，可以在这里进行批量整理。</text>
+  </view>
+</view>
+
+<view class="batch-action-bar" wx:if="{{selectedCount}}">
+  <view class="batch-action" bindtap="batchFavorite">
+    <text class="batch-action__symbol">★</text>
+    <text>{{favoriteActionLabel}}</text>
+  </view>
+  <view class="batch-action" bindtap="openTagSheet">
+    <text class="batch-action__symbol">#</text>
+    <text>标签</text>
+  </view>
+  <view class="batch-action is-danger" bindtap="batchDelete">
+    <text class="batch-action__symbol">×</text>
+    <text>删除</text>
+  </view>
+</view>
+
+<view class="sheet-mask" wx:if="{{showTagSheet}}" catchtap="closeTagSheet">
+  <view class="tag-sheet" catchtap="swallow">
+    <view class="tag-sheet__handle"></view>
+    <view class="tag-sheet__heading">
+      <view>
+        <text class="tag-sheet__title">批量设置标签</text>
+        <text class="tag-sheet__desc">已选择 {{selectedCount}} 条提示词</text>
+      </view>
+      <view class="tag-sheet__close" bindtap="closeTagSheet">×</view>
+    </view>
+    <view class="tag-sheet__tags">
+      <view
+        class="tag-option {{item.selected ? 'is-selected' : ''}}"
+        wx:for="{{tags}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="toggleBatchTag"
+      >#{{item.name}}</view>
+    </view>
+    <view class="tag-sheet__actions">
+      <button class="remove-tag-button" data-mode="remove" bindtap="applyBatchTags">移除所选标签</button>
+      <button class="add-tag-button" data-mode="add" bindtap="applyBatchTags">添加所选标签</button>
+    </view>
+  </view>
+</view>

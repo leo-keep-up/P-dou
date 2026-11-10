@@ -1,0 +1,69 @@
+<view class="page-shell home-page">
+  <view class="home-heading">
+    <view class="home-brand"><image class="home-brand__icon" src="/assets/pdou-icon.png" mode="aspectFit" /><text class="home-brand__p">P</text><text class="home-brand__name">兜</text></view>
+    <view class="home-heading__count">{{totalCount}} 条</view>
+  </view>
+
+  <view class="search-box">
+    <text class="search-box__icon">⌕</text>
+    <input
+      class="search-box__input"
+      value="{{query}}"
+      placeholder="搜索 Prompt、标签或内容…"
+      placeholder-class="search-box__placeholder"
+      bindinput="handleSearch"
+      confirm-type="search"
+    />
+    <view class="search-box__clear" wx:if="{{query}}" bindtap="clearSearch">×</view>
+  </view>
+
+  <scroll-view class="tag-strip" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+    <view class="tag-strip__inner">
+      <view class="filter-chip {{!selectedTagIds.length && !favoritesOnly ? 'is-selected' : ''}}" bindtap="showAll">全部</view>
+      <tag-pill
+        wx:for="{{tagOptions}}"
+        wx:key="id"
+        tag-id="{{item.id}}"
+        label="{{item.name}}"
+        selected="{{item.selected}}"
+        bind:change="toggleTag"
+      />
+      <view class="filter-chip {{favoritesOnly ? 'is-selected' : ''}}" data-mode="{{favoritesOnly ? 'all' : 'favorite'}}" bindtap="changeListMode">收藏</view>
+      <view class="filter-chip filter-chip--add" bindtap="manageTags" aria-label="管理标签">＋</view>
+    </view>
+  </scroll-view>
+
+  <view class="copy-hint" wx:if="{{showCopyHint && prompts.length}}">
+    <text>点击正文复制，点 ··· 查看与编辑</text>
+    <view class="copy-hint__close" bindtap="dismissCopyHint" aria-label="关闭提示">×</view>
+  </view>
+  <view class="prompt-list" wx:if="{{prompts.length}}">
+    <prompt-card
+      wx:for="{{prompts}}"
+      wx:key="id"
+      prompt="{{item}}"
+      bind:open="openPrompt"
+      bind:copy="copyPrompt"
+      bind:favorite="toggleFavorite"
+    />
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-state__symbol">✦</view>
+    <text class="empty-state__title">{{emptyTitle}}</text>
+    <text class="empty-state__text">{{emptyText}}</text>
+    <button class="empty-action secondary-button" wx:if="{{totalCount && (query || selectedTagIds.length)}}" bindtap="clearFilters">清除筛选</button>
+    <button class="empty-action secondary-button" wx:elif="{{totalCount && favoritesOnly}}" data-mode="all" bindtap="changeListMode">查看全部</button>
+    <button class="empty-action primary-button" wx:elif="{{!totalCount}}" bindtap="createPrompt">新增提示词</button>
+  </view>
+</view>
+
+<view class="undo-bar" wx:if="{{showUndo}}">
+  <view class="undo-bar__copy">
+    <text class="undo-bar__title">已移入回收站</text>
+    <text class="undo-bar__preview">{{undoPreview}}</text>
+  </view>
+  <view class="undo-bar__action" bindtap="undoDelete">撤销</view>
+</view>
+
+<bottom-nav current="home" />

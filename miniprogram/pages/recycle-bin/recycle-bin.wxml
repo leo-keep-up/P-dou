@@ -1,0 +1,34 @@
+<view class="recycle-page">
+  <view class="recycle-heading">
+    <view>
+      <text class="recycle-heading__eyebrow">RECYCLE BIN</text>
+      <view class="page-title">回收站</view>
+    </view>
+    <view class="clear-button" wx:if="{{prompts.length}}" bindtap="clearRecycleBin">清空</view>
+  </view>
+
+  <view class="retention-tip">
+    <view class="retention-tip__icon">↺</view>
+    <text>删除的提示词保留 {{retentionDays}} 天，期间可以随时恢复。</text>
+  </view>
+
+  <view class="recycle-list" wx:if="{{prompts.length}}">
+    <view class="recycle-card surface" wx:for="{{prompts}}" wx:key="id">
+      <text class="recycle-card__content">{{item.content}}</text>
+      <view class="recycle-card__tags" wx:if="{{item.tagNames.length}}">
+        <text wx:for="{{item.tagNames}}" wx:key="*this">#{{item}}</text>
+      </view>
+      <text class="recycle-card__time">删除于 {{item.deletedLabel}}</text>
+      <view class="recycle-card__actions">
+        <button class="restore-button" data-id="{{item.id}}" bindtap="restorePrompt">恢复</button>
+        <button class="delete-button" data-id="{{item.id}}" bindtap="deleteForever">彻底删除</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-state__symbol">↺</view>
+    <text class="empty-state__title">回收站是空的</text>
+    <text class="empty-state__text">从详情页删除的提示词会暂时保存在这里。</text>
+  </view>
+</view>

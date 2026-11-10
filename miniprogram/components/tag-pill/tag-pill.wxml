@@ -1,0 +1,3 @@
+<view class="tag-pill tone-{{tone}} {{selected ? 'is-selected' : ''}} {{compact ? 'is-compact' : ''}}" bindtap="handleTap">
+  <text>{{label}}</text>
+</view>

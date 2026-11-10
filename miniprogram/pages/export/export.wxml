@@ -1,0 +1,64 @@
+<view class="export-page">
+  <view class="export-heading">
+    <text class="export-heading__eyebrow">DATA EXPORT</text>
+    <view class="page-title">数据导出</view>
+    <text class="export-heading__desc">把本机数据保存为文件，或复制到其他应用。</text>
+  </view>
+
+  <view class="export-summary surface">
+    <view class="summary-item">
+      <text class="summary-value">{{promptCount}}</text>
+      <text class="summary-label">有效提示词</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-value">{{tagCount}}</text>
+      <text class="summary-label">标签</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-value">{{deletedCount}}</text>
+      <text class="summary-label">回收站</text>
+    </view>
+  </view>
+
+  <view class="format-card surface">
+    <view class="format-card__top">
+      <view class="format-icon">{ }</view>
+      <view class="format-copy">
+        <text class="format-title">JSON 完整备份</text>
+        <text class="format-desc">包含提示词、标签、收藏、回收站状态和时间信息，适合完整备份与未来恢复。</text>
+      </view>
+    </view>
+    <view class="format-note">包含回收站数据 · UTF-8 · JSON</view>
+    <view class="format-actions">
+      <button class="copy-button" data-format="json" bindtap="copyExport">复制 JSON</button>
+      <button class="export-button" data-format="json" bindtap="exportFile">{{busyFormat === 'json' ? '生成中…' : '导出文件'}}</button>
+    </view>
+  </view>
+
+  <view class="format-card surface">
+    <view class="format-card__top">
+      <view class="format-icon is-markdown">M↓</view>
+      <view class="format-copy">
+        <text class="format-title">Markdown 阅读版</text>
+        <text class="format-desc">按收藏和最近修改排序，适合在笔记软件、文档或编辑器中直接阅读。</text>
+      </view>
+    </view>
+    <view class="format-note">仅有效提示词 · UTF-8 · Markdown</view>
+    <view class="format-actions">
+      <button class="copy-button" data-format="markdown" bindtap="copyExport">复制 Markdown</button>
+      <button class="export-button" data-format="markdown" bindtap="exportFile">{{busyFormat === 'markdown' ? '生成中…' : '导出文件'}}</button>
+    </view>
+  </view>
+
+  <view class="last-export" wx:if="{{lastExportName}}">
+    <text>最近生成</text>
+    <text class="last-export__name">{{lastExportName}}</text>
+  </view>
+
+  <view class="privacy-tip">
+    <text class="privacy-tip__icon">✓</text>
+    <text>导出过程完全在本机完成，不会上传到云端。</text>
+  </view>
+</view>

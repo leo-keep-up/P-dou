@@ -1,0 +1,138 @@
+.backups-page {
+  min-height: 100vh;
+  padding: 28rpx 28rpx calc(52rpx + env(safe-area-inset-bottom));
+}
+
+.backups-heading__eyebrow {
+  color: #75909e;
+  font-size: 19rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+}
+
+.backups-heading__desc {
+  margin-top: -12rpx;
+  display: block;
+  color: #748893;
+  font-size: 24rpx;
+}
+
+.safety-tip {
+  margin: 28rpx 0;
+  padding: 20rpx 22rpx;
+  display: flex;
+  align-items: flex-start;
+  gap: 15rpx;
+  border-radius: 23rpx;
+  background: #e6f7f5;
+  color: #557482;
+  font-size: 22rpx;
+  line-height: 1.55;
+}
+
+.safety-tip__icon {
+  width: 38rpx;
+  height: 38rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #13a8a7;
+  color: #fff;
+  font-size: 20rpx;
+}
+
+.backup-card {
+  margin-bottom: 20rpx;
+  padding: 28rpx;
+}
+
+.backup-card__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.backup-card__reason,
+.backup-card__time {
+  display: block;
+}
+
+.backup-card__reason {
+  color: #2a424e;
+  font-size: 28rpx;
+  font-weight: 650;
+}
+
+.backup-card__time {
+  margin-top: 7rpx;
+  color: #8798a1;
+  font-size: 21rpx;
+}
+
+.backup-card__badge {
+  padding: 8rpx 15rpx;
+  border-radius: 999rpx;
+  background: #e6f7f5;
+  color: #507588;
+  font-size: 20rpx;
+}
+
+.backup-card__stats {
+  min-height: 112rpx;
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 22rpx;
+  background: #f8fafc;
+}
+
+.backup-card__stats > view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rpx;
+}
+
+.backup-card__stats text:first-child {
+  color: #345260;
+  font-size: 29rpx;
+  font-weight: 700;
+}
+
+.backup-card__stats text:last-child {
+  color: #85959e;
+  font-size: 19rpx;
+}
+
+.backup-card__actions {
+  margin-top: 22rpx;
+  display: flex;
+  gap: 14rpx;
+}
+
+.backup-card__actions button {
+  height: 76rpx;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  font-size: 23rpx;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.delete-backup {
+  background: #f5ecec;
+  color: #98565a;
+}
+
+.restore-backup {
+  background: #13a8a7;
+  color: #fff;
+}

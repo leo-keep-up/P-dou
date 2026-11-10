@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tag-pill": "/components/tag-pill/tag-pill"
+  }
+}

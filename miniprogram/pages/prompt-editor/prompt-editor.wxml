@@ -1,0 +1,60 @@
+<view class="editor-page">
+  <view class="editor-head">
+    <view class="save-status">
+      <view class="save-status__dot"></view>
+      <text>{{saveStatus}}</text>
+    </view>
+    <view class="editor-favorite {{isFavorite ? 'is-active' : ''}}" bindtap="toggleFavorite">
+      <text>{{isFavorite ? '★ 已收藏' : '☆ 收藏'}}</text>
+    </view>
+  </view>
+
+  <view class="editor-card surface">
+    <textarea
+      class="editor-textarea"
+      value="{{content}}"
+      placeholder="在这里写下提示词……"
+      placeholder-class="editor-placeholder"
+      placeholder-style="font-size: 30rpx; line-height: 52rpx;"
+      auto-height="{{false}}"
+      maxlength="-1"
+      cursor-spacing="28"
+      bindinput="handleInput"
+      bindblur="handleBlur"
+      focus="{{shouldAutoFocus}}"
+    />
+  </view>
+
+  <view class="section-head">
+    <view>
+      <text class="section-title">标签</text>
+      <text class="section-desc">可选择多个标签</text>
+    </view>
+  </view>
+
+  <view class="tag-picker" wx:if="{{tags.length}}">
+    <tag-pill
+      wx:for="{{tags}}"
+      wx:key="id"
+      tag-id="{{item.id}}"
+      label="{{item.name}}"
+      selected="{{item.selected}}"
+      bind:change="toggleTag"
+    />
+  </view>
+
+  <view class="tag-create">
+    <input
+      value="{{tagName}}"
+      maxlength="20"
+      placeholder="快速新建标签"
+      bindinput="handleTagName"
+      bindconfirm="addTag"
+      confirm-type="done"
+    />
+    <button class="tag-create__button" bindtap="addTag">添加</button>
+  </view>
+
+  <text class="editor-tip">停止输入 5 秒、文本框失焦或返回页面时会保存到本机；正文为空时不会创建记录。</text>
+  <text class="editor-tip" wx:if="{{syncStatus}}">{{syncStatus}}</text>
+</view>

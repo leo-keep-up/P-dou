@@ -147,3 +147,16 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+
+# P兜: local/private configuration and generated artifacts
+project.private.config.json
+*.pem
+*.key
+*.p12
+docs/preview-*.png
+docs/preview-*.json
+docs/upload-*.json
+.DS_Store
+Thumbs.db
+

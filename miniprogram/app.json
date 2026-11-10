@@ -1,0 +1,24 @@
+{
+  "__usePrivacyCheck__": true,
+  "pages": [
+    "pages/home/home",
+    "pages/prompt-detail/prompt-detail",
+    "pages/prompt-editor/prompt-editor",
+    "pages/tags/tags",
+    "pages/mine/mine",
+    "pages/recycle-bin/recycle-bin",
+    "pages/prompt-manager/prompt-manager",
+    "pages/export/export",
+    "pages/settings/settings",
+    "pages/backups/backups"
+  ],
+  "window": {
+    "navigationBarTitleText": "P兜",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F8FAFC",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
